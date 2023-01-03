@@ -1,0 +1,37 @@
+results_dir: "./exp/"
+vis_test_dir: "/nas/home/jihyokim/jm/CRAFT-Refactoring-v2/exp/viz"
+wandb_opt: False
+
+data_dir:
+  synthtext: "/data/SynthText/"
+  synthtext_gt: NULL
+  synthtext_kor : "/nas/datahub/SynthText-KR"
+  ai_hub : "/nas/datahub/ai-hub-data/textinthewild_data/all_image"
+  ai_hub_gt : "/nas/datahub/ai-hub-data/textinthewild_data/last_new_a100.json"
+  prescription: "/nas/datahub/prescription/"
+
+train:
+  backbone : resnet
+
+test:
+  trained_model: '/nas/home/jihyokim/jm/CRAFT-Refactoring-0324/exp/prescrip_resnet_neg1_en_y0.25/CRAFT_clr_amp_last50000.pth'
+  icdar2013:
+    cuda: True
+    vis_opt: True
+    test_data_dir : "/nas/datahub/ICDAR2013/"
+    text_threshold: 0.85 # ICDAR2015 0.85
+    low_text: 0.5 # ICDAR2015 0.5
+    link_threshold: 0.2 # ICDAR2013: 0.2
+    canvas_size: 960
+    mag_ratio: 1.5
+    poly: False
+  prescription:
+    cuda: True
+    vis_opt: True
+    test_data_dir: "/nas/datahub/prescription/"
+    text_threshold: 0.1 # ICDAR2015 0.85
+    low_text: 0.25 # ICDAR2015 0.5
+    link_threshold: 0.4 # ICDAR2013: 0.2
+    canvas_size: 2560
+    mag_ratio: 1.
+    poly: False
